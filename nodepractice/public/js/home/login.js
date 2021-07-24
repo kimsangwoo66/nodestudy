@@ -1,5 +1,5 @@
 "use strict";
-
+// html과 연결되어있는 javascript 파일
 // 백단
 
 console.log("아니");
@@ -16,14 +16,17 @@ function login() {
     id: id.value,
     password: password.value,
   };
-  console.log(req);
-  console.log(JSON.stringify(req)); //json 객체는 문자열로 감싸져있음
+  // console.log(req);
+  // console.log(JSON.stringify(req)); //json 객체는 문자열로 감싸져있음
 
+  //응답한 데이터를 다시 받을려면 then()이라는 메소드를 사용해서 받아 올 수있다.
   fetch("/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(req),
-  });
+  })
+    .then((res) => res.json())
+    .then(console.log);
 }
