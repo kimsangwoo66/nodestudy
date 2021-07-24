@@ -1,14 +1,15 @@
+<!-- 프론트단 -->
 <!DOCTYPE html>
 <html lang="ko"> <!--한국어가 안꺠지려면 ko로 설정해줘야한다.  -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/js/home/login.js"></script>
+    <script src="/js/home/login.js" defer></script> <!--defer을 사용해야  login.js 에서 html을 읽을 수있음  -->
     <title>Document</title>
 </head>
 <body>
-    <input type="text" placeholder="아이디"><br>
-    <input type="text" placeholder="비밀번호"><br>
+    <input id="id" type="text" placeholder="아이디"><br>
+    <input id="password" type="text" placeholder="비밀번호"><br>
     <button>로그인</button>
 </body>
 </html>
