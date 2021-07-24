@@ -17,4 +17,13 @@ function login() {
     password: password.value,
   };
   console.log(req);
+  console.log(JSON.stringify(req)); //json 객체는 문자열로 감싸져있음
+
+  fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(req),
+  });
 }
