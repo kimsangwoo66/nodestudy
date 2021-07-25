@@ -30,6 +30,7 @@ const process = {
       const idx = users.id.indexOf(id);
       if (users.password[idx] === password) {
         return res.json({
+          //로그인 성공시 리턴
           success: true,
           msg: "로그인에 성공하셨습니다.",
         });
@@ -37,6 +38,7 @@ const process = {
     }
 
     return res.json({
+      //로그인 실패시 리턴
       success: false,
       msg: "로그인에 실패하셨습니다.",
     });
