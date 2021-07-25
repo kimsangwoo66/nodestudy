@@ -5,10 +5,7 @@
 // function hello(req, res)랑 같다고 보면 된다.
 //hello라는 컨트롤러 함수를 만들어준다.
 
-const users = {
-  id: ["kim", "jim", "mkmk"],
-  password: ["1234", "12345", "123456"],
-};
+const UserStorage = require("../../models/UserStorage");
 
 const output = {
   hello: (req, res) => {
@@ -26,22 +23,22 @@ const process = {
     const id = req.body.id,
       password = req.body.password;
 
+    const users = UserStorage.getUsers("id", "password");
+
+    const response = {};
     if (users.id.includes(id)) {
-      const idx = users.id.indexOf(id);
+      //로그인 검증 비즈니스 로직
+      const idx = users.id.indexOf(id); //indexof 메소드는 원하는 id 문자열을 찾기 위해 사용
       if (users.password[idx] === password) {
-        return res.json({
-          //로그인 성공시 리턴
-          success: true,
-          msg: "로그인에 성공하셨습니다.",
-        });
+        response.success = true;
+        response.msg = "로그인에 성공하였습니다.";
+        return res.json(response);
       }
     }
 
-    return res.json({
-      //로그인 실패시 리턴
-      success: false,
-      msg: "로그인에 실패하셨습니다.",
-    });
+    response.success = false;
+    response.msg = "로그인에 실패하셨습니다.";
+    return res.json(response);
   },
 };
 module.exports = {

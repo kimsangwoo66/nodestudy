@@ -1,6 +1,6 @@
 "use strict";
 // html과 연결되어있는 javascript 파일
-// 백단
+// 프론트와 연결된 자바스크립트
 
 console.log("아니");
 const id = document.querySelector("#id"); //queryselector은 질의 선택자, id(선택자)로 불러온다.
