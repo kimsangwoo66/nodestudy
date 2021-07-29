@@ -24,6 +24,18 @@ class UserStorage {
 
     return newUsers;
   }
+
+  static getUserInfo(id) {
+    const users = this.#users;
+    const idx = users.id.indexOf(id); //id에 해당하는 리스트를 idx에 넣음
+    const userskeys = Object.keys(users); // => [id, password, name]
+    const userInfo = userskeys.reduce((newUser, info) => {
+      newUser[info] = users[info][idx];
+      return newUser;
+    }, {}); //초기값으로는 오브젝트를 넣음
+
+    return userInfo;
+  }
 }
 
 module.exports = UserStorage;
