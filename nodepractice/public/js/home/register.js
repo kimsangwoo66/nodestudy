@@ -12,13 +12,16 @@ console.log("앙녕칭구"); //콘솔창에서 메시지가 나오게 되면 reg
 registerBtn.addEventListener("click", register);
 
 function register() {
+  if (!id.value) return alert("아이디를 입력해 주세요");
+  if (password !== confirmPassword) {
+    return alert("비밀번호가 일치하지 않습니다.");
+  }
   //   console.log(id.value);
   const req = {
     //받아올 파라미터를 오브젝트 형태로 받아옴
     id: id.value,
     name: name.value,
     password: password.value,
-    confirmPassword: confirmPassword.value,
   };
 
   // console.log(req);
