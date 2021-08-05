@@ -6,10 +6,10 @@ class User {
     this.body = body;
   }
 
-  login() {
+  async login() {
     const client = this.body;
-
-    const { id, password } = UserStorage.getUserInfo(client.id);
+    const { id, password } = await UserStorage.getUserInfo(client.id);
+    // const { id, password } = UserStorage.getUserInfo(client.id);
 
     if (id) {
       // 스토리지의 id와 클라이언트의 아이디가 같고 패스워드가 같으면 true
