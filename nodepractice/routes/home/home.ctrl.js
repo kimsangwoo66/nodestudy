@@ -18,7 +18,7 @@ const output = {
     res.render("home/register");
   },
 };
-
+//await asnyc 로 비동기 처리
 const process = {
   login: async (req, res) => {
     const user = new User(req.body);
@@ -26,9 +26,9 @@ const process = {
     // console.log(response);
     return res.json(response);
   },
-  register: (req, res) => {
+  register: async (req, res) => {
     const user = new User(req.body);
-    const response = user.register();
+    const response = await user.register();
     // console.log(response);
     return res.json(response);
   },
