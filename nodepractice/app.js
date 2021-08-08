@@ -2,16 +2,21 @@
 //모듈
 const express = require("express");
 const bodyParser = require("body-parser");
+//환경변수 설정 .env를 활용하면 어떤 os환경에서 개발해도 동일한 환경변수로 작업할 수 있다.
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
 //라우팅
-const home = require("./routes/home");
+const home = require("./src/routes/home");
 
 //앱 세팅
-app.set("views", "./views");
+// app.set("views", "./views");
+app.set("views", "./src/views");
 app.set("view engine", "ejs"); //뷰엔진을 ejs 로 해석해 주기 위해 사용, ejs 는 html이라고 생각하고 사용
 
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(`${__dirname}/src/public`)); //src 앞에 / 뺴먹으면 바로 css 안잎혀진다.
 
 app.use(bodyParser.json()); //json data를 파싱해 올수 있도록 명시
 
